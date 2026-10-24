@@ -44,25 +44,26 @@ PromptPilot fixes that with a pipeline of small, composable MCP tools:
 
 Requires **Node.js ≥ 18** and `git` on PATH (used for change inspection).
 
-### From GitHub (recommended)
+### From source (verified)
 
 ```bash
-# one-shot via npx (builds automatically via the prepare script)
+git clone https://github.com/Ntureyc/PromptPilot.git
+cd PromptPilot
+npm install        # also builds dist/ via the prepare script
+node dist/index.js # starts the MCP stdio server
+```
+
+### Directly from GitHub via npm
+
+```bash
+# one-shot via npx
 npx -y github:Ntureyc/PromptPilot
 
 # or install globally
 npm install -g github:Ntureyc/PromptPilot
 ```
 
-### From source
-
-```bash
-git clone https://github.com/Ntureyc/PromptPilot.git
-cd PromptPilot
-npm install
-npm run build
-node dist/index.js   # starts the MCP stdio server
-```
+> Note: npm's git-based installs must be allowed in your npm configuration and need working GitHub access (some locked-down environments disable git fetches, or fall back to SSH without a key). When in doubt, use the from-source install above — it is fully verified.
 
 ## Connecting to an MCP client
 
