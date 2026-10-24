@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "1.0",
+  "id": "navigation-bar-redesign-example",
+  "title": "Navigation bar redesign",
+  "request": "Build a navigation bar that looks nice.",
+  "createdAt": "2026-10-24T09:00:00.000Z",
+  "projectRoot": "/demo/next-app",
+  "taskCategory": "ui",
+  "requirements": [
+    {
+      "text": "Build a navigation bar that looks nice.",
+      "source": "stated",
+      "confidence": "high"
+    },
+    {
+      "text": "Match the existing project stack and conventions (typescript, next.js, react, tailwindcss, prisma); do not introduce a parallel framework or styling system.",
+      "source": "inferred",
+      "confidence": "high"
+    },
+    {
+      "text": "Use the existing Tailwind design tokens/classes instead of one-off CSS.",
+      "source": "inferred",
+      "confidence": "high"
+    },
+    {
+      "text": "Follow project instruction files (AGENTS.md).",
+      "source": "inferred",
+      "confidence": "high"
+    },
+    {
+      "text": "Preserve the 1 pre-existing uncommitted change(s) in the working tree.",
+      "source": "inferred",
+      "confidence": "high"
+    },
+    {
+      "text": "Run the project's existing checks (npm run lint, npm run test, npm run build, npm run typecheck) before reporting completion.",
+      "source": "inferred",
+      "confidence": "high"
+    }
+  ],
+  "nonGoals": [
+    "No unrelated refactoring",
+    "No dependency or configuration changes unless required by the task",
+    "No changes to pre-existing uncommitted user work"
+  ],
+  "assumptions": [
+    {
+      "assumption": "UI work should reuse the existing next.js/react/tailwindcss/prisma component patterns rather than generating standalone markup.",
+      "verifyBy": "Locate the closest existing component and compare its structure before implementing."
+    },
+    {
+      "assumption": "No specific target file was named in the request.",
+      "verifyBy": "Run inspect_project and identify the file(s) that own this behavior before editing."
+    }
+  ],
+  "openQuestions": [
+    {
+      "question": "What does the request's wording (\"looks nice\") mean concretely here?",
+      "reason": "Visual direction is not defined for this project.",
+      "suggestedOptions": [
+        "Minimal and refined (match existing design tokens)",
+        "Translucent / layered surfaces",
+        "Bold hierarchy with prominent calls to action"
+      ],
+      "blocking": true
+    }
+  ],
+  "chosenOption": {
+    "id": "opt-2",
+    "name": "Visual overhaul",
+    "approach": "Rework the Build a navigation bar that looks nice. layout and surface treatment (hierarchy, translucency/borders or stronger contrast) while preserving routes, auth hooks and callbacks in typescript, next.js, react, tailwindcss, prisma.",
+    "risk": "medium",
+    "effort": "medium"
+  },
+  "acceptanceCriteria": [
+    {
+      "id": "AC-1",
+      "text": "The request \"Build a navigation bar that looks nice.\" is implemented as specified (stated requirements only).",
+      "check": "manual-review"
+    },
+    {
+      "id": "AC-2",
+      "text": "Stated requirement satisfied: Build a navigation bar that looks nice.",
+      "check": "manual-review"
+    },
+    {
+      "id": "AC-3",
+      "text": "No files outside the agreed change scope were modified.",
+      "check": "check_change_scope"
+    },
+    {
+      "id": "AC-4",
+      "text": "All applicable project checks (lint / typecheck / test / build) pass, or their absence is explicitly reported.",
+      "check": "verify_implementation"
+    },
+    {
+      "id": "AC-5",
+      "text": "Pre-existing uncommitted user changes are preserved.",
+      "check": "check_change_scope"
+    }
+  ],
+  "changeScope": {
+    "allowedFiles": [
+      "src/components/Header.tsx",
+      "src/components/Nav*.tsx",
+      "src/app/globals.css"
+    ],
+    "protectedPaths": [
+      ".git/**",
+      ".env",
+      ".env.*",
+      "**/*.pem",
+      "**/*.key"
+    ],
+    "allowedCategories": [],
+    "requiresApproval": [
+      "dependency-change",
+      "database-migration",
+      "auth-or-config",
+      "file-deletion"
+    ]
+  },
+  "verification": {
+    "commands": [
+      {
+        "label": "typecheck",
+        "command": "npm run typecheck",
+        "timeoutMs": 300000
+      },
+      {
+        "label": "lint",
+        "command": "npm run lint",
+        "timeoutMs": 300000
+      },
+      {
+        "label": "test",
+        "command": "npm run test",
+        "timeoutMs": 300000
+      },
+      {
+        "label": "build",
+        "command": "npm run build",
+        "timeoutMs": 300000
+      }
+    ],
+    "notes": []
+  },
+  "policy": {
+    "destructiveActionsAllowed": false,
+    "preserveDirtyWorkingTree": true,
+    "maxFixRetries": 2
+  },
+  "status": "draft"
+}

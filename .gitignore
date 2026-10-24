@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.promptpilot/
+*.log
+.DS_Store

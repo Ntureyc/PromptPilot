@@ -1,0 +1,51 @@
+{
+  "name": "promptpilot",
+  "version": "1.0.0",
+  "description": "PromptPilot MCP — turn vague prompts into context-rich, bounded, verifiable engineering tasks for coding agents.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Ntureyc",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ntureyc/PromptPilot.git"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "context-engineering",
+    "coding-agent",
+    "task-spec",
+    "promptpilot"
+  ],
+  "bin": {
+    "promptpilot": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "docs",
+    "examples",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "test": "bun test test/",
+    "test:node": "npm run build && node test/mcp-client.mjs",
+    "start": "node dist/index.js",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.6.0"
+  }
+}
